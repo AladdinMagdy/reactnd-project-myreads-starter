@@ -1,18 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Bookshelf from "./Bookshelf";
+import BookShelf from "./BookShelf";
 
 class MainPage extends React.Component {
   render() {
     return (
       <div className="list-books">
         <div className="list-books-title">
-          <h1>Aladdin's Reads 😍</h1>
+          <h1>
+            Aladdin's Reads{" "}
+            <span role="img" aria-label="heart-eyes-emoji">
+              😍
+            </span>
+          </h1>
         </div>
         <div className="list-books-content">
           <div>
             <div className="bookshelf">
-              <Bookshelf
+              <BookShelf
                 shelfName="Currently Reading"
                 books={this.props.books.filter(
                   book => book.shelf === "currentlyReading"
@@ -21,7 +26,7 @@ class MainPage extends React.Component {
               />
             </div>
             <div className="bookshelf">
-              <Bookshelf
+              <BookShelf
                 shelfName="Want to Read"
                 books={this.props.books.filter(
                   book => book.shelf === "wantToRead"
@@ -30,7 +35,7 @@ class MainPage extends React.Component {
               />
             </div>
             <div className="bookshelf">
-              <Bookshelf
+              <BookShelf
                 shelfName="Read"
                 books={this.props.books.filter(book => book.shelf === "read")}
                 update={this.props.update}
