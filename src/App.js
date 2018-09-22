@@ -16,16 +16,14 @@ class BooksApp extends React.Component {
   }
 
   updatingBooks = (movedBook, toShelf) => {
-    BooksAPI.update(movedBook, toShelf).then(() => {
-      movedBook.shelf = toShelf;
+    let updatedBooks;
+    BooksAPI.update(movedBook, toShelf);
+    movedBook.shelf = toShelf;
 
-      let updatedBooks = this.state.allBooks.filter(
-        book => book.id !== movedBook.id
-      );
+    updatedBooks = this.state.allBooks.filter(book => book.id !== movedBook.id);
 
-      updatedBooks.push(movedBook);
-      this.setState({ allBooks: updatedBooks });
-    });
+    updatedBooks.push(movedBook);
+    this.setState({ allBooks: updatedBooks });
   };
 
   render() {
